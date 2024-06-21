@@ -1,6 +1,10 @@
 import 'package:bmi_cal/utils/reused_cont.dart';
 import 'package:flutter/material.dart';
 
+const bottomContainerHeight = 80.0;
+const bodyContainerColor = Color(0xff1D1E32);
+const bottomContainerColor = Color(0xffEA1E63);
+
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
 
@@ -27,12 +31,12 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusedContainer(
-                    colour: Color(0xff1D1E32),
+                    colour: bodyContainerColor,
                   ),
                 ),
                 Expanded(
                   child: ReusedContainer(
-                    colour: Color(0xff1D1E32),
+                    colour: bodyContainerColor,
                   ),
                 ),
               ],
@@ -40,7 +44,7 @@ class _InputPageState extends State<InputPage> {
           ),
           const Expanded(
             child: ReusedContainer(
-              colour: Color(0xff1D1E32),
+              colour: bodyContainerColor,
             ),
           ),
           const Expanded(
@@ -48,12 +52,12 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusedContainer(
-                    colour: Color(0xff1D1E32),
+                    colour: bodyContainerColor,
                   ),
                 ),
                 Expanded(
                   child: ReusedContainer(
-                    colour: Color(0xff1D1E32),
+                    colour: bodyContainerColor,
                   ),
                 ),
               ],
@@ -64,7 +68,7 @@ class _InputPageState extends State<InputPage> {
               color: Color(0xffEA1E63),
             ),
             margin: EdgeInsets.only(top: 10),
-            height: 80,
+            height: bottomContainerHeight,
             width: double.infinity,
           ),
         ],
