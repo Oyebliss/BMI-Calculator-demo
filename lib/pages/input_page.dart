@@ -1,5 +1,8 @@
 import 'package:bmi_cal/utils/reused_cont.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../utils/reused_column.dart';
 
 const bottomContainerHeight = 80.0;
 const bodyContainerColor = Color(0xff1D1E32);
@@ -20,7 +23,7 @@ class _InputPageState extends State<InputPage> {
         backgroundColor: Theme.of(context).primaryColor,
         title: const Center(
           child: Text(
-            'B.M.I CAlCULATOR',
+            'B.M.I CALCULATOR',
           ),
         ),
       ),
@@ -31,11 +34,19 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusedContainer(
+                    cardChild: ReusedColumn(
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
+                    ),
                     colour: bodyContainerColor,
                   ),
                 ),
                 Expanded(
                   child: ReusedContainer(
+                    cardChild: ReusedColumn(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'FEMALE',
+                    ),
                     colour: bodyContainerColor,
                   ),
                 ),
@@ -52,11 +63,13 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusedContainer(
+                    cardChild: Column(),
                     colour: bodyContainerColor,
                   ),
                 ),
                 Expanded(
                   child: ReusedContainer(
+                    cardChild: Column(),
                     colour: bodyContainerColor,
                   ),
                 ),
@@ -64,10 +77,10 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xffEA1E63),
             ),
-            margin: EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.only(top: 10),
             height: bottomContainerHeight,
             width: double.infinity,
           ),
