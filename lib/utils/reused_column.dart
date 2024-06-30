@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+const labelTextStyle = TextStyle(
+  fontSize: 18,
+  color: Color(0xff8D8E98),
+);
+
 class ReusedColumn extends StatelessWidget {
   final IconData? icon;
   final String? label;
@@ -19,10 +24,7 @@ class ReusedColumn extends StatelessWidget {
         ),
         Text(
           label!,
-          style: const TextStyle(
-            fontSize: 18,
-            color: Color(0xff8D8E98),
-          ),
+          style: labelTextStyle,
         ),
       ],
     );

@@ -5,8 +5,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../utils/reused_column.dart';
 
 const bottomContainerHeight = 80.0;
-const bodyContainerColor = Color(0xff1D1E32);
+const bodyActiveColor = Color(0xff1D1E33);
+const bodyInactiveColor = Color(0xff111328);
 const bottomContainerColor = Color(0xffEA1E63);
+
+// creating gender Enums
+enum GenderType {
+  male,
+  female,
+}
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -16,6 +23,30 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleCardColor = bodyInactiveColor;
+  Color femaleCardColor = bodyInactiveColor;
+
+  void updateColor(GenderType selectedGender) {
+    // if male card got pressed
+    if (selectedGender == GenderType.male) {
+      if (maleCardColor == bodyInactiveColor) {
+        maleCardColor = bodyActiveColor;
+        femaleCardColor = bodyInactiveColor;
+      } else {
+        maleCardColor = bodyInactiveColor;
+      }
+    }
+    // if female card got pressed
+    if (selectedGender == GenderType.female) {
+      if (femaleCardColor == bodyInactiveColor) {
+        femaleCardColor = bodyActiveColor;
+        maleCardColor = bodyInactiveColor;
+      } else {
+        femaleCardColor = bodyInactiveColor;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,25 +60,39 @@ class _InputPageState extends State<InputPage> {
       ),
       body: Column(
         children: [
-          const Expanded(
+          Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: ReusedContainer(
-                    cardChild: ReusedColumn(
-                      icon: FontAwesomeIcons.mars,
-                      label: 'MALE',
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColor(GenderType.male);
+                      });
+                    },
+                    child: ReusedContainer(
+                      cardChild: ReusedColumn(
+                        icon: FontAwesomeIcons.mars,
+                        label: 'MALE',
+                      ),
+                      colour: maleCardColor,
                     ),
-                    colour: bodyContainerColor,
                   ),
                 ),
                 Expanded(
-                  child: ReusedContainer(
-                    cardChild: ReusedColumn(
-                      icon: FontAwesomeIcons.venus,
-                      label: 'FEMALE',
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColor(GenderType.female);
+                      });
+                    },
+                    child: ReusedContainer(
+                      cardChild: ReusedColumn(
+                        icon: FontAwesomeIcons.venus,
+                        label: 'FEMALE',
+                      ),
+                      colour: femaleCardColor,
                     ),
-                    colour: bodyContainerColor,
                   ),
                 ),
               ],
@@ -55,7 +100,7 @@ class _InputPageState extends State<InputPage> {
           ),
           const Expanded(
             child: ReusedContainer(
-              colour: bodyContainerColor,
+              colour: bodyActiveColor,
             ),
           ),
           const Expanded(
@@ -64,13 +109,13 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusedContainer(
                     cardChild: Column(),
-                    colour: bodyContainerColor,
+                    colour: bodyActiveColor,
                   ),
                 ),
                 Expanded(
                   child: ReusedContainer(
                     cardChild: Column(),
-                    colour: bodyContainerColor,
+                    colour: bodyActiveColor,
                   ),
                 ),
               ],
@@ -78,7 +123,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Container(
             decoration: const BoxDecoration(
-              color: Color(0xffEA1E63),
+              color: bottomContainerColor,
             ),
             margin: const EdgeInsets.only(top: 10),
             height: bottomContainerHeight,
