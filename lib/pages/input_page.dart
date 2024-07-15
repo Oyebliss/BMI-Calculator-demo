@@ -1,4 +1,4 @@
-import 'package:bmi_cal/utils/reused_cont.dart';
+import 'package:bmi_cal/utils/reused_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -23,29 +23,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = bodyInactiveColor;
-  Color femaleCardColor = bodyInactiveColor;
-
-  void updateColor(GenderType selectedGender) {
-    // if male card got pressed
-    if (selectedGender == GenderType.male) {
-      if (maleCardColor == bodyInactiveColor) {
-        maleCardColor = bodyActiveColor;
-        femaleCardColor = bodyInactiveColor;
-      } else {
-        maleCardColor = bodyInactiveColor;
-      }
-    }
-    // if female card got pressed
-    if (selectedGender == GenderType.female) {
-      if (femaleCardColor == bodyInactiveColor) {
-        femaleCardColor = bodyActiveColor;
-        maleCardColor = bodyInactiveColor;
-      } else {
-        femaleCardColor = bodyInactiveColor;
-      }
-    }
-  }
+  GenderType? selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -64,42 +42,42 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusedCard(
+                    onPress: () {
                       setState(() {
-                        updateColor(GenderType.male);
+                        selectedGender = GenderType.male;
                       });
                     },
-                    child: ReusedContainer(
-                      cardChild: ReusedColumn(
-                        icon: FontAwesomeIcons.mars,
-                        label: 'MALE',
-                      ),
-                      colour: maleCardColor,
+                    cardChild: const ReusedColumn(
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
                     ),
+                    colour: selectedGender == GenderType.male
+                        ? bodyActiveColor
+                        : bodyInactiveColor,
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusedCard(
+                    onPress: () {
                       setState(() {
-                        updateColor(GenderType.female);
+                        selectedGender = GenderType.female;
                       });
                     },
-                    child: ReusedContainer(
-                      cardChild: ReusedColumn(
-                        icon: FontAwesomeIcons.venus,
-                        label: 'FEMALE',
-                      ),
-                      colour: femaleCardColor,
+                    cardChild: const ReusedColumn(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'FEMALE',
                     ),
+                    colour: selectedGender == GenderType.female
+                        ? bodyActiveColor
+                        : bodyInactiveColor,
                   ),
                 ),
               ],
             ),
           ),
           const Expanded(
-            child: ReusedContainer(
+            child: ReusedCard(
               colour: bodyActiveColor,
             ),
           ),
@@ -107,13 +85,13 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusedContainer(
+                  child: ReusedCard(
                     cardChild: Column(),
                     colour: bodyActiveColor,
                   ),
                 ),
                 Expanded(
-                  child: ReusedContainer(
+                  child: ReusedCard(
                     cardChild: Column(),
                     colour: bodyActiveColor,
                   ),
