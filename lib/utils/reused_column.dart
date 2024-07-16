@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-const labelTextStyle = TextStyle(
-  fontSize: 18,
-  color: Color(0xff8D8E98),
-);
+import 'constants.dart';
 
 class ReIconColumn extends StatelessWidget {
   final IconData? icon;
@@ -24,7 +21,7 @@ class ReIconColumn extends StatelessWidget {
         ),
         Text(
           label!,
-          style: labelTextStyle,
+          style: kLabelTextStyle,
         ),
       ],
     );
