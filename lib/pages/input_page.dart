@@ -2,12 +2,8 @@ import 'package:bmi_cal/utils/reused_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../utils/constants.dart';
 import '../utils/reused_column.dart';
-
-const bottomContainerHeight = 80.0;
-const bodyActiveColor = Color(0xff1D1E33);
-const bodyInactiveColor = Color(0xff111328);
-const bottomContainerColor = Color(0xffEA1E63);
 
 // creating gender Enums
 enum GenderType {
@@ -48,13 +44,13 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = GenderType.male;
                       });
                     },
-                    cardChild: const ReusedColumn(
+                    cardChild: const ReIconColumn(
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
                     ),
                     colour: selectedGender == GenderType.male
-                        ? bodyActiveColor
-                        : bodyInactiveColor,
+                        ? kActiveColor
+                        : kInactiveColor,
                   ),
                 ),
                 Expanded(
@@ -64,13 +60,13 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = GenderType.female;
                       });
                     },
-                    cardChild: const ReusedColumn(
+                    cardChild: const ReIconColumn(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
                     ),
                     colour: selectedGender == GenderType.female
-                        ? bodyActiveColor
-                        : bodyInactiveColor,
+                        ? kActiveColor
+                        : kInactiveColor,
                   ),
                 ),
               ],
@@ -78,7 +74,7 @@ class _InputPageState extends State<InputPage> {
           ),
           const Expanded(
             child: ReusedCard(
-              colour: bodyActiveColor,
+              colour: kActiveColor,
             ),
           ),
           const Expanded(
@@ -87,13 +83,13 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusedCard(
                     cardChild: Column(),
-                    colour: bodyActiveColor,
+                    colour: kActiveColor,
                   ),
                 ),
                 Expanded(
                   child: ReusedCard(
                     cardChild: Column(),
-                    colour: bodyActiveColor,
+                    colour: kActiveColor,
                   ),
                 ),
               ],
@@ -101,10 +97,10 @@ class _InputPageState extends State<InputPage> {
           ),
           Container(
             decoration: const BoxDecoration(
-              color: bottomContainerColor,
+              color: kBottomContainerColor,
             ),
             margin: const EdgeInsets.only(top: 10),
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
             width: double.infinity,
           ),
         ],

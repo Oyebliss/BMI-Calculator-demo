@@ -5,10 +5,10 @@ const labelTextStyle = TextStyle(
   color: Color(0xff8D8E98),
 );
 
-class ReusedColumn extends StatelessWidget {
+class ReIconColumn extends StatelessWidget {
   final IconData? icon;
   final String? label;
-  const ReusedColumn({super.key, this.icon, this.label});
+  const ReIconColumn({super.key, this.icon, this.label});
 
   @override
   Widget build(BuildContext context) {
