@@ -19,6 +19,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  int height = 180;
   GenderType? selectedGender;
 
   @override
@@ -73,13 +74,13 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          const Expanded(
+          Expanded(
             child: ReusedCard(
               colour: kActiveColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Height',
                     style: kLabelTextStyle,
                   ),
@@ -89,14 +90,26 @@ class _InputPageState extends State<InputPage> {
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        '180',
+                        height.toString(),
                         style: kLargeLabel,
                       ),
-                      Text(
+                      const Text(
                         'cm',
                         style: kLabelTextStyle,
                       ),
                     ],
+                  ),
+                  Slider(
+                    min: kSliderMin,
+                    max: kSliderMax,
+                    activeColor: kSliderActiveColor,
+                    inactiveColor: kSliderInactiveColor,
+                    value: height.toDouble(),
+                    onChanged: (newValue) {
+                      setState(() {
+                        height = newValue.round();
+                      });
+                    },
                   ),
                 ],
               ),

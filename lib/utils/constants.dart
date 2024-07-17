@@ -14,3 +14,8 @@ const kLargeLabel = TextStyle(
   fontSize: 70,
   fontWeight: FontWeight.w900,
 );
+
+const kSliderMin = 100.00;
+const kSliderMax = 400.00;
+const kSliderActiveColor = Color(0xFFEB1555);
+const kSliderInactiveColor = Color(0xFF8D8E98);
