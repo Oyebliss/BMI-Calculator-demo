@@ -19,3 +19,4 @@ const kSliderMin = 100.00;
 const kSliderMax = 400.00;
 const kSliderActiveColor = Color(0xFFEB1555);
 const kSliderInactiveColor = Color(0xFF8D8E98);
+const kSliderOverlayColor = Color(0x29EB1555);
