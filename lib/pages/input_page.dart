@@ -20,6 +20,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   int height = 180;
+  int weight = 60;
   GenderType? selectedGender;
 
   @override
@@ -127,16 +128,28 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ),
-          const Expanded(
+          Expanded(
             child: Row(
               children: [
                 Expanded(
                   child: ReusedCard(
-                    cardChild: Column(),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kLargeLabel,
+                        ),
+                      ],
+                    ),
                     colour: kActiveColor,
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: ReusedCard(
                     cardChild: Column(),
                     colour: kActiveColor,
