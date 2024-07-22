@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../utils/constants.dart';
 import '../utils/reused_column.dart';
+import '../utils/rounded_icon_button.dart';
 
 // creating gender Enums
 enum GenderType {
@@ -21,6 +22,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   int height = 180;
   int weight = 60;
+  int age = 18;
   GenderType? selectedGender;
 
   @override
@@ -37,9 +39,11 @@ class _InputPageState extends State<InputPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // First Column
           Expanded(
             child: Row(
               children: [
+                // Male Card
                 Expanded(
                   child: ReusedCard(
                     onPress: () {
@@ -56,6 +60,8 @@ class _InputPageState extends State<InputPage> {
                         : kInactiveColor,
                   ),
                 ),
+
+                // Female Card
                 Expanded(
                   child: ReusedCard(
                     onPress: () {
@@ -75,6 +81,8 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
+
+          // Second Column
           Expanded(
             child: ReusedCard(
               colour: kActiveColor,
@@ -128,9 +136,12 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ),
+
+          // Third Column
           Expanded(
             child: Row(
               children: [
+                // Weight Card
                 Expanded(
                   child: ReusedCard(
                     cardChild: Column(
@@ -144,14 +155,76 @@ class _InputPageState extends State<InputPage> {
                           weight.toString(),
                           style: kLargeLabel,
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundedIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPress: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            RoundedIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPress: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            )
+                          ],
+                        )
                       ],
                     ),
                     colour: kActiveColor,
                   ),
                 ),
-                const Expanded(
+
+                // Age Card
+                Expanded(
                   child: ReusedCard(
-                    cardChild: Column(),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'AGE',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kLargeLabel,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundedIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPress: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            RoundedIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPress: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                     colour: kActiveColor,
                   ),
                 ),
