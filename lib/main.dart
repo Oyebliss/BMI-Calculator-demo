@@ -1,4 +1,5 @@
 import 'package:bmi_cal/pages/input_page.dart';
+import 'package:bmi_cal/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,10 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-        primaryColor: const Color(0xff090E21),
-        scaffoldBackgroundColor: const Color(0xff090E21),
+        primaryColor: kPrimaryColor,
+        scaffoldBackgroundColor: kScaffoldBackgroundColor,
       ),
-      home: InputPage(),
+      home: const InputPage(),
     );
   }
 }

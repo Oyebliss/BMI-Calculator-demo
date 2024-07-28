@@ -1,3 +1,5 @@
+import 'package:bmi_cal/utils/bmi_brain.dart';
+import 'package:bmi_cal/utils/buttons_button.dart';
 import 'package:bmi_cal/utils/reused_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -5,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../utils/constants.dart';
 import '../utils/reused_column.dart';
 import '../utils/rounded_icon_button.dart';
+import 'result_page.dart';
 
 // creating gender Enums
 enum GenderType {
@@ -90,7 +93,7 @@ class _InputPageState extends State<InputPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Height',
+                    'HEIGHT',
                     style: kLabelTextStyle,
                   ),
                   Row(
@@ -100,7 +103,7 @@ class _InputPageState extends State<InputPage> {
                     children: [
                       Text(
                         height.toString(),
-                        style: kLargeLabel,
+                        style: kNumberLabel,
                       ),
                       const Text(
                         'cm',
@@ -153,7 +156,7 @@ class _InputPageState extends State<InputPage> {
                         ),
                         Text(
                           weight.toString(),
-                          style: kLargeLabel,
+                          style: kNumberLabel,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -197,7 +200,7 @@ class _InputPageState extends State<InputPage> {
                         ),
                         Text(
                           age.toString(),
-                          style: kLargeLabel,
+                          style: kNumberLabel,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -231,13 +234,21 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            decoration: const BoxDecoration(
-              color: kBottomContainerColor,
-            ),
-            margin: const EdgeInsets.only(top: 10),
-            height: kBottomContainerHeight,
-            width: double.infinity,
+          BmiButton(
+            buttonText: 'CALCULATE',
+            onTap: () {
+              CalculatorBrain check = CalculatorBrain(height, weight);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                    bmiResult: check.calculateBMI(),
+                    resultText: check.getResult(),
+                    interpretation: check.getInterpretation(),
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),
